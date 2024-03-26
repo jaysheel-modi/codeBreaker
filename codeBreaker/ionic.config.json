@@ -1,0 +1,7 @@
+{
+  "name": "codeBreaker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

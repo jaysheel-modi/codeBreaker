@@ -1,0 +1,159 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Code Breaker | Jaysheel's Assignment 3
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <form #inputForm="ngForm">
+    <ion-card color="tertiary">
+      <ion-row>
+        <ion-col size="3">
+          <ion-list-header>
+            Option 1
+          </ion-list-header>
+          <ion-item color="tertiary">
+            <ion-radio-group [(ngModel)]="codeBreaker.op1" name="op1" required>
+              <ion-item>
+                <ion-label style="background-color: red;">Red</ion-label>
+                <ion-radio value="red"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: blue;">Blue</ion-label>
+                <ion-radio value="blue"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: green;">Green</ion-label>
+                <ion-radio value="green"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="3">
+          <ion-list-header>
+            Option 2
+          </ion-list-header>
+          <ion-item color="tertiary">
+            <ion-radio-group [(ngModel)]="codeBreaker.op2" name="op2" required>
+              <ion-item>
+                <ion-label style="background-color: red;">Red</ion-label>
+                <ion-radio value="red"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: blue;">Blue</ion-label>
+                <ion-radio value="blue"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: green;">Green</ion-label>
+                <ion-radio value="green"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="3">
+          <ion-list-header>
+            Option 3
+          </ion-list-header>
+          <ion-item color="tertiary">
+            <ion-radio-group [(ngModel)]="codeBreaker.op3" name="op3" required>
+              <ion-item>
+                <ion-label style="background-color: red;">Red</ion-label>
+                <ion-radio value="red"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: blue;">Blue</ion-label>
+                <ion-radio value="blue"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: green;">Green</ion-label>
+                <ion-radio value="green"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="3">
+          <ion-list-header>
+            Option 4
+          </ion-list-header>
+          <ion-item color="tertiary">
+            <ion-radio-group [(ngModel)]="codeBreaker.op4" name="op4" required>
+              <ion-item>
+                <ion-label style="background-color: red;">Red</ion-label>
+                <ion-radio value="red"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: blue;">Blue</ion-label>
+                <ion-radio value="blue"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="background-color: green;">Green</ion-label>
+                <ion-radio value="green"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-card style="text-align: center; margin: 20px 0 20px 0px; width: 100%;"color="warning" *ngIf="
+      codeBreaker.op1 == '' || codeBreaker.op2 == '' || codeBreaker.op3 == '' || codeBreaker.op4 == ''
+      ">Please select all the option</ion-card>
+      <ion-button color="dark" style="margin: 20px 0 20px 30%;" [disabled]="isDisabled"
+        (click)="verifyColor()">Verify</ion-button>
+
+      <ion-button color="primary" style="margin: 20px 0 20px 30%;" (click)="resetGame()"
+        [disabled]="gameRestart">Restart Game</ion-button>
+
+      <ion-button color="primary" style="margin: 0px 0 20px 45%;" >
+        Turn left: {{max - count}}
+      </ion-button>
+    </ion-card>
+  </form>
+
+  <ion-row>
+    <ion-col>
+      <ion-list-header>
+        Guesses
+      </ion-list-header>
+      <ion-card style="width: 200px;">
+        <ion-row *ngFor="let item of lastCodes; let i = index">
+          <ion-label style="padding: 10px;">{{i + 1}}</ion-label>
+          <ion-col *ngFor="let item1 of item;" [style.background-color]="item1.color">
+            <ion-label style="padding: 5px;">{{ item1.result }}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+
+
+    <ion-col>
+      <ion-list-header>
+        Feedback
+      </ion-list-header>
+      <ion-card color="primary">
+        <ion-row>
+          <ion-col>
+            Black
+          </ion-col>
+          <ion-col>
+            While
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of feedbackCount">
+          <ion-col>
+            {{item.blackCount}}
+          </ion-col>
+          <ion-col>
+            {{item.whiteCount}}
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
