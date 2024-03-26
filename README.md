@@ -1,4 +1,4 @@
-#codeBreaker
+# codeBreaker
 
 The project allows players to guess the color pallets. They have 10 turns to guess the correct color at the correct position.
 
